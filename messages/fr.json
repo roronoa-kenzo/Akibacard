@@ -31,6 +31,14 @@
     "submitting": "Création…",
     "hasAccount": "Déjà un compte ?",
     "signIn": "Se connecter",
-    "confirmEmail": "Compte créé. Vérifiez votre email pour confirmer l'inscription, puis connectez-vous."
+    "confirmEmail": "Compte créé. Vérifiez votre email pour confirmer l'inscription, puis connectez-vous.",
+    "passwordInvalid": "Le mot de passe ne respecte pas toutes les exigences.",
+    "passwordRules": {
+      "minLength": "Au moins 8 caractères",
+      "uppercase": "Une lettre majuscule",
+      "lowercase": "Une lettre minuscule",
+      "digit": "Un chiffre",
+      "special": "Un caractère spécial (!@#$…)"
+    }
   }
 }

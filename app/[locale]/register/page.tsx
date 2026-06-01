@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl'
 import { FormEvent, useState } from 'react'
 import { Link, useRouter } from '@/i18n/navigation'
+import { PasswordRequirements } from '@/components/PasswordRequirements'
+import { isPasswordValid } from '@/lib/password'
 import { supabase } from '@/lib/supabase'
 
 export default function RegisterPage() {
@@ -16,10 +18,18 @@ export default function RegisterPage() {
   const [message, setMessage] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
+  const passwordValid = isPasswordValid(password)
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError(null)
     setMessage(null)
+
+    if (!passwordValid) {
+      setError(t('passwordInvalid'))
+      return
+    }
+
     setLoading(true)
 
     const { data, error } = await supabase.auth.signUp({
@@ -76,17 +86,23 @@ export default function RegisterPage() {
           />
         </label>
 
-        <label className="flex flex-col gap-1 text-sm">
-          {tCommon('password')}
-          <input
-            type="password"
-            required
-            minLength={6}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="rounded border border-neutral-300 px-3 py-2 dark:border-neutral-700 dark:bg-neutral-900"
-          />
-        </label>
+        <div className="flex flex-col gap-2 text-sm">
+          <label className="flex flex-col gap-1">
+            {tCommon('password')}
+            <input
+              type="password"
+              required
+              autoComplete="new-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="rounded border border-neutral-300 px-3 py-2 dark:border-neutral-700 dark:bg-neutral-900"
+              aria-describedby="password-requirements"
+            />
+          </label>
+          <div id="password-requirements">
+            <PasswordRequirements password={password} />
+          </div>
+        </div>
 
         {error && <p className="text-sm text-red-600">{error}</p>}
         {message && (
@@ -95,7 +111,7 @@ export default function RegisterPage() {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={loading || !passwordValid}
           className="rounded bg-neutral-900 px-4 py-2 text-white disabled:opacity-50 dark:bg-neutral-100 dark:text-neutral-900"
         >
           {loading ? t('submitting') : t('submit')}
