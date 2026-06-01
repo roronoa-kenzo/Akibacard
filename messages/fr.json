@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Akibacard",
+    "description": "Collection et échange de cartes TCG"
+  },
+  "common": {
+    "brand": "Akibacard",
+    "login": "Connexion",
+    "register": "Inscription",
+    "logout": "Déconnexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "username": "Nom d'utilisateur",
+    "usernamePattern": "Lettres, chiffres et underscore uniquement"
+  },
+  "home": {
+    "tagline": "Collectionnez, échangez et gérez vos cartes TCG au même endroit.",
+    "createAccount": "Créer un compte",
+    "signIn": "Se connecter"
+  },
+  "login": {
+    "title": "Connexion",
+    "submit": "Se connecter",
+    "submitting": "Connexion…",
+    "noAccount": "Pas de compte ?",
+    "signUp": "S'inscrire"
+  },
+  "register": {
+    "title": "Inscription",
+    "submit": "Créer un compte",
+    "submitting": "Création…",
+    "hasAccount": "Déjà un compte ?",
+    "signIn": "Se connecter",
+    "confirmEmail": "Compte créé. Vérifiez votre email pour confirmer l'inscription, puis connectez-vous."
+  }
+}

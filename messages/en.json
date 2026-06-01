@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Akibacard",
+    "description": "Collect and trade TCG cards"
+  },
+  "common": {
+    "brand": "Akibacard",
+    "login": "Log in",
+    "register": "Sign up",
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "usernamePattern": "Letters, numbers and underscores only"
+  },
+  "home": {
+    "tagline": "Collect, trade and manage your TCG cards in one place.",
+    "createAccount": "Create an account",
+    "signIn": "Log in"
+  },
+  "login": {
+    "title": "Log in",
+    "submit": "Log in",
+    "submitting": "Logging in…",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  },
+  "register": {
+    "title": "Sign up",
+    "submit": "Create an account",
+    "submitting": "Creating…",
+    "hasAccount": "Already have an account?",
+    "signIn": "Log in",
+    "confirmEmail": "Account created. Check your email to confirm your registration, then log in."
+  }
+}

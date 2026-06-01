@@ -1,10 +1,10 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import type { User } from '@supabase/supabase-js'
-import { DashboardHeader } from '../../components/DashboardHeader'
-import { supabase } from '../../lib/supabase'
+import { useRouter } from '@/i18n/navigation'
+import { DashboardHeader } from '@/components/DashboardHeader'
+import { supabase } from '@/lib/supabase'
 
 export default function DashboardPage() {
   const router = useRouter()
