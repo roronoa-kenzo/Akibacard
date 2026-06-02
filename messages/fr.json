@@ -14,9 +14,58 @@
     "usernamePattern": "Lettres, chiffres et underscore uniquement"
   },
   "home": {
+    "heroWelcome": "BIENVENUE",
+    "heroTo": "SUR",
+    "heroBrand": "AKIBACARD",
+    "heroSubtitleTitle": "L'écosystème TCG tout-en-un",
+    "heroSubtitleBody": "Suivez les prix, mettez en valeur votre collection, estimez des comptes, échangez avec d'autres collectionneurs et rejoignez une communauté active. Que vous collectionniez, investissiez ou échangiez, c'est ici que toute l'expérience TCG se réunit.",
     "tagline": "Collectionnez, échangez et gérez vos cartes TCG au même endroit.",
     "createAccount": "Créer un compte",
-    "signIn": "Se connecter"
+    "signIn": "Se connecter",
+    "scrollHint": "Défiler vers le contenu"
+  },
+  "features": {
+    "title": "Tout ce dont votre collection a besoin",
+    "subtitle": "Une seule plateforme pour suivre, présenter, estimer et échanger vos cartes.",
+    "prices": {
+      "title": "Prix en temps réel",
+      "desc": "Suivez la valeur marchande de vos cartes avec des prix toujours à jour."
+    },
+    "collection": {
+      "title": "Présentez votre collection",
+      "desc": "Organisez et mettez en valeur vos cartes dans une collection soignée."
+    },
+    "evaluate": {
+      "title": "Estimez les comptes",
+      "desc": "Obtenez une estimation instantanée de la valeur réelle d'une collection."
+    },
+    "trade": {
+      "title": "Échangez en confiance",
+      "desc": "Échangez vos cartes avec d'autres collectionneurs en toute transparence."
+    },
+    "community": {
+      "title": "Communauté active",
+      "desc": "Rejoignez des milliers de collectionneurs, investisseurs et joueurs."
+    },
+    "games": {
+      "title": "Plusieurs TCG",
+      "desc": "Pokémon, One Piece et plus encore — tous vos jeux réunis."
+    }
+  },
+  "games": {
+    "title": "Pensé pour vos jeux préférés",
+    "subtitle": "Des milliers de cartes déjà indexées, prêtes à explorer.",
+    "pokemon": "Pokémon TCG",
+    "onepiece": "One Piece Card Game"
+  },
+  "cta": {
+    "title": "Prêt à bâtir votre collection ?",
+    "body": "Créez votre compte gratuit et réunissez toute votre expérience TCG.",
+    "button": "Créer un compte"
+  },
+  "footer": {
+    "tagline": "L'écosystème TCG tout-en-un.",
+    "copyright": "© {year} Akibacard. Tous droits réservés."
   },
   "login": {
     "title": "Connexion",

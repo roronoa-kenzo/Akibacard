@@ -14,9 +14,58 @@
     "usernamePattern": "Letters, numbers and underscores only"
   },
   "home": {
+    "heroWelcome": "WELCOME",
+    "heroTo": "TO",
+    "heroBrand": "AKIBACARD",
+    "heroSubtitleTitle": "The All-in-One TCG Ecosystem",
+    "heroSubtitleBody": "Track prices, showcase your collection, evaluate accounts, trade with other collectors, and join a thriving community. Whether you're collecting, investing, or trading, this is where the entire TCG experience comes together.",
     "tagline": "Collect, trade and manage your TCG cards in one place.",
     "createAccount": "Create an account",
-    "signIn": "Log in"
+    "signIn": "Log in",
+    "scrollHint": "Scroll to content"
+  },
+  "features": {
+    "title": "Everything your collection needs",
+    "subtitle": "One platform to track, showcase, evaluate and trade your cards.",
+    "prices": {
+      "title": "Real-time prices",
+      "desc": "Follow the market value of your cards with always up-to-date pricing."
+    },
+    "collection": {
+      "title": "Showcase your collection",
+      "desc": "Organize and display your cards in a collection that looks as good as it feels."
+    },
+    "evaluate": {
+      "title": "Evaluate accounts",
+      "desc": "Get an instant estimate of how much a collection is really worth."
+    },
+    "trade": {
+      "title": "Trade with confidence",
+      "desc": "Exchange cards with other collectors safely and transparently."
+    },
+    "community": {
+      "title": "Active community",
+      "desc": "Join thousands of collectors, investors and players in one place."
+    },
+    "games": {
+      "title": "Multiple TCGs",
+      "desc": "Pokémon, One Piece and more — all your favorite games together."
+    }
+  },
+  "games": {
+    "title": "Built for your favorite games",
+    "subtitle": "Thousands of cards already indexed and ready to explore.",
+    "pokemon": "Pokémon TCG",
+    "onepiece": "One Piece Card Game"
+  },
+  "cta": {
+    "title": "Ready to build your collection?",
+    "body": "Create your free account and bring your entire TCG experience together.",
+    "button": "Create an account"
+  },
+  "footer": {
+    "tagline": "The all-in-one TCG ecosystem.",
+    "copyright": "© {year} Akibacard. All rights reserved."
   },
   "login": {
     "title": "Log in",
