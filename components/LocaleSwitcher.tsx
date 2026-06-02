@@ -2,6 +2,8 @@
 
 import { useLocale } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { routing } from '@/i18n/routing'
 
 export function LocaleSwitcher() {
@@ -9,17 +11,16 @@ export function LocaleSwitcher() {
   const pathname = usePathname()
 
   return (
-    <div className="flex gap-2 text-sm">
+    <div className="flex gap-1">
       {routing.locales.map((l) => (
         <Link
           key={l}
           href={pathname}
           locale={l}
-          className={
-            locale === l
-              ? 'font-semibold underline'
-              : 'text-neutral-500 hover:underline dark:text-neutral-400'
-          }
+          className={cn(
+            buttonVariants({ variant: 'ghost', size: 'sm' }),
+            locale === l && 'bg-muted'
+          )}
         >
           {l.toUpperCase()}
         </Link>

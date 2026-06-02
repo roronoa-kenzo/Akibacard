@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { passwordRules } from '@/lib/password'
+import { cn } from '@/lib/utils'
 
 type PasswordRequirementsProps = {
   password: string
@@ -18,14 +19,12 @@ export function PasswordRequirements({ password }: PasswordRequirementsProps) {
         return (
           <li
             key={key}
-            className={
-              valid
-                ? 'text-green-600 dark:text-green-400'
-                : 'text-neutral-500 dark:text-neutral-400'
-            }
+            className={cn(
+              'text-muted-foreground',
+              valid && 'text-green-600 dark:text-green-400'
+            )}
           >
-            <span aria-hidden="true">{valid ? '✓' : '○'}</span>{' '}
-            {t(key)}
+            <span aria-hidden="true">{valid ? '✓' : '○'}</span> {t(key)}
           </li>
         )
       })}

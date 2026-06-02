@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link, useRouter } from '@/i18n/navigation'
+import { Button } from '@/components/ui/button'
 import { supabase } from '@/lib/supabase'
 import { LocaleSwitcher } from './LocaleSwitcher'
 
@@ -20,18 +21,20 @@ export function DashboardHeader({ email }: DashboardHeaderProps) {
   }
 
   return (
-    <header className="flex items-center justify-between gap-4 border-b border-neutral-200 p-4 dark:border-neutral-800">
-      <Link href="/dashboard" className="font-semibold">
+    <header className="flex items-center justify-between gap-4 border-b border-border p-4">
+      <Link href="/dashboard" className="text-sm font-semibold">
         {t('brand')}
       </Link>
-      <nav className="flex items-center gap-3 text-sm">
+      <nav className="flex items-center gap-2">
         <LocaleSwitcher />
         {email && (
-          <span className="text-neutral-600 dark:text-neutral-400">{email}</span>
+          <span className="hidden text-sm text-muted-foreground sm:inline">
+            {email}
+          </span>
         )}
-        <button type="button" onClick={handleLogout} className="underline">
+        <Button variant="ghost" size="sm" onClick={handleLogout}>
           {t('logout')}
-        </button>
+        </Button>
       </nav>
     </header>
   )

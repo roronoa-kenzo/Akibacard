@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Link, useRouter } from '@/i18n/navigation'
 import { PublicHeader } from '@/components/PublicHeader'
+import { buttonVariants } from '@/components/ui/button'
 import { supabase } from '@/lib/supabase'
 
 export default function HomePage() {
@@ -48,22 +49,14 @@ export default function HomePage() {
       <main className="mx-auto flex max-w-2xl flex-col gap-8 p-8">
         <section className="flex flex-col gap-4">
           <h1 className="text-4xl font-bold tracking-tight">{tCommon('brand')}</h1>
-          <p className="text-lg text-neutral-600 dark:text-neutral-400">
-            {t('tagline')}
-          </p>
+          <p className="text-lg text-muted-foreground">{t('tagline')}</p>
         </section>
 
         <section className="flex flex-wrap gap-3">
-          <Link
-            href="/register"
-            className="rounded bg-neutral-900 px-5 py-2.5 text-sm text-white dark:bg-neutral-100 dark:text-neutral-900"
-          >
+          <Link href="/register" className={buttonVariants({ size: 'lg' })}>
             {t('createAccount')}
           </Link>
-          <Link
-            href="/login"
-            className="rounded border border-neutral-300 px-5 py-2.5 text-sm dark:border-neutral-700"
-          >
+          <Link href="/login" className={buttonVariants({ variant: 'outline', size: 'lg' })}>
             {t('signIn')}
           </Link>
         </section>
