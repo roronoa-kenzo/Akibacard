@@ -13,6 +13,11 @@
     "username": "Username",
     "usernamePattern": "Letters, numbers and underscores only"
   },
+  "dashboard": {
+    "title": "Your games",
+    "subtitle": "Pick a game to explore all of its cards.",
+    "explore": "Explore"
+  },
   "home": {
     "heroWelcome": "WELCOME",
     "heroTo": "TO",

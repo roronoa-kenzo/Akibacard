@@ -1,16 +1,21 @@
 'use client'
 
+import type { User } from '@supabase/supabase-js'
 import { useTranslations } from 'next-intl'
-import { Link, useRouter } from '@/i18n/navigation'
-import { Button } from '@/components/ui/button'
+import { useRouter } from '@/i18n/navigation'
+import { BrandLogoLink } from '@/components/BrandLogoLink'
 import { supabase } from '@/lib/supabase'
 import { LocaleSwitcher } from './LocaleSwitcher'
+import { UserAvatar } from './UserAvatar'
+
+const navAction =
+  'text-base font-bold uppercase tracking-wide text-[#B9FF48] transition-opacity hover:opacity-80'
 
 type DashboardHeaderProps = {
-  email?: string | null
+  user: User | null
 }
 
-export function DashboardHeader({ email }: DashboardHeaderProps) {
+export function DashboardHeader({ user }: DashboardHeaderProps) {
   const t = useTranslations('common')
   const router = useRouter()
 
@@ -21,20 +26,14 @@ export function DashboardHeader({ email }: DashboardHeaderProps) {
   }
 
   return (
-    <header className="flex items-center justify-between gap-4 border-b border-border p-4">
-      <Link href="/dashboard" className="text-sm font-semibold">
-        {t('brand')}
-      </Link>
-      <nav className="flex items-center gap-2">
-        <LocaleSwitcher />
-        {email && (
-          <span className="hidden text-sm text-muted-foreground sm:inline">
-            {email}
-          </span>
-        )}
-        <Button variant="ghost" size="sm" onClick={handleLogout}>
+    <header className="relative z-20 flex h-24 w-full items-center justify-between px-6 md:px-12">
+      <BrandLogoLink />
+      <nav className="ml-auto flex items-center gap-4 md:gap-6">
+        <LocaleSwitcher tone="onDark" />
+        <button type="button" onClick={handleLogout} className={navAction}>
           {t('logout')}
-        </Button>
+        </button>
+        <UserAvatar user={user} />
       </nav>
     </header>
   )

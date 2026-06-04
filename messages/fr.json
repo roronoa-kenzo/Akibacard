@@ -13,6 +13,11 @@
     "username": "Nom d'utilisateur",
     "usernamePattern": "Lettres, chiffres et underscore uniquement"
   },
+  "dashboard": {
+    "title": "Vos jeux",
+    "subtitle": "Choisissez un jeu pour explorer toutes ses cartes.",
+    "explore": "Explorer"
+  },
   "home": {
     "heroWelcome": "BIENVENUE",
     "heroTo": "SUR",
