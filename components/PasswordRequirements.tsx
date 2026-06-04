@@ -20,8 +20,8 @@ export function PasswordRequirements({ password }: PasswordRequirementsProps) {
           <li
             key={key}
             className={cn(
-              'text-muted-foreground',
-              valid && 'text-green-600 dark:text-green-400'
+              'text-white/55',
+              valid && 'text-[#B9FF48]'
             )}
           >
             <span aria-hidden="true">{valid ? '✓' : '○'}</span> {t(key)}

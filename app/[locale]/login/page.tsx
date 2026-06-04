@@ -3,15 +3,8 @@
 import { useTranslations } from 'next-intl'
 import { FormEvent, useState } from 'react'
 import { Link, useRouter } from '@/i18n/navigation'
+import { AuthShell } from '@/components/AuthShell'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { supabase } from '@/lib/supabase'
@@ -44,55 +37,56 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-full max-w-md flex-col justify-center p-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>{tCommon('login')}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form id="login-form" onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="email">{tCommon('email')}</Label>
-              <Input
-                id="email"
-                type="email"
-                required
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+    <AuthShell title={t('title')}>
+      <form id="login-form" onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="email" className="text-white/80">
+            {tCommon('email')}
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            required
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border-white/15 bg-black/30 text-white placeholder:text-white/35"
+          />
+        </div>
 
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="password">{tCommon('password')}</Label>
-              <Input
-                id="password"
-                type="password"
-                required
-                minLength={6}
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="password" className="text-white/80">
+            {tCommon('password')}
+          </Label>
+          <Input
+            id="password"
+            type="password"
+            required
+            minLength={6}
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="border-white/15 bg-black/30 text-white placeholder:text-white/35"
+          />
+        </div>
 
-            {error && <p className="text-sm text-destructive">{error}</p>}
+        {error && <p className="text-sm text-red-400">{error}</p>}
 
-            <Button type="submit" disabled={loading} className="w-full">
-              {loading ? t('submitting') : t('submit')}
-            </Button>
-          </form>
-        </CardContent>
-        <CardFooter className="justify-center border-t-0 bg-transparent">
-          <p className="text-sm text-muted-foreground">
-            {t('noAccount')}{' '}
-            <Link href="/register" className="text-primary underline-offset-4 hover:underline">
-              {t('signUp')}
-            </Link>
-          </p>
-        </CardFooter>
-      </Card>
-    </main>
+        <Button
+          type="submit"
+          disabled={loading}
+          className="mt-2 w-full bg-[#B9FF48] font-bold text-black hover:opacity-90"
+        >
+          {loading ? t('submitting') : t('submit')}
+        </Button>
+
+        <p className="pt-1 text-center text-sm text-white/60">
+          {t('noAccount')}{' '}
+          <Link href="/register" className="font-semibold text-[#B9FF48] hover:underline">
+            {t('signUp')}
+          </Link>
+        </p>
+      </form>
+    </AuthShell>
   )
 }
