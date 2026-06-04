@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { BrandLogoLink } from './BrandLogoLink'
 import { LocaleSwitcher } from './LocaleSwitcher'
 
 const navLink =
@@ -12,8 +13,9 @@ export function PublicHeader() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-20 flex h-24 w-full items-center justify-between px-6 md:px-12">
-      <LocaleSwitcher tone="onDark" />
-      <nav className="ml-auto flex items-center gap-8">
+      <BrandLogoLink />
+      <nav className="ml-auto flex items-center gap-4 md:gap-8">
+        <LocaleSwitcher tone="onDark" />
         <Link href="/login" className={navLink}>
           {t('login')}
         </Link>

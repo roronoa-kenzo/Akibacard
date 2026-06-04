@@ -12,6 +12,7 @@ import {
   Users,
 } from 'lucide-react'
 import { Link, useRouter } from '@/i18n/navigation'
+import { BrandLogoLink } from '@/components/BrandLogoLink'
 import { PublicHeader } from '@/components/PublicHeader'
 import { Reveal } from '@/components/Reveal'
 import { supabase } from '@/lib/supabase'
@@ -58,7 +59,6 @@ export default function HomePage() {
   const tg = useTranslations('games')
   const tc = useTranslations('cta')
   const tFooter = useTranslations('footer')
-  const tCommon = useTranslations('common')
   const router = useRouter()
   const [checking, setChecking] = useState(true)
 
@@ -223,9 +223,9 @@ export default function HomePage() {
 
       <footer className={`border-t border-white/10 ${SECTION_X_PADDING} py-10`}>
         <div className={`${CONTENT_MAX_WIDTH} flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left`}>
-          <div>
-            <span className="font-heading text-lg font-bold">{tCommon('brand')}</span>
-            <p className="mt-1 text-sm text-white/50">{tFooter('tagline')}</p>
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <BrandLogoLink />
+            <p className="text-sm text-white/50">{tFooter('tagline')}</p>
           </div>
           <p className="text-sm text-white/40">
             {tFooter('copyright', { year: String(new Date().getFullYear()) })}
