@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import:pokemon": "node scripts/import-pokemon.mjs",
+    "import:one-piece": "node scripts/import-one-piece.mjs",
+    "import:yugioh": "node scripts/import-yugioh.mjs",
+    "import:cards": "npm run import:pokemon && npm run import:one-piece && npm run import:yugioh"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
