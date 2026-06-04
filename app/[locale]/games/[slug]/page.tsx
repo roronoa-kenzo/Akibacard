@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { Search } from 'lucide-react'
 import type { User } from '@supabase/supabase-js'
 import { useRouter } from '@/i18n/navigation'
 import { DashboardHeader } from '@/components/DashboardHeader'
@@ -39,22 +40,30 @@ export default function GamePage() {
   const [gameName, setGameName] = useState('')
   const [status, setStatus] = useState<'loading' | 'ready' | 'notFound'>('loading')
   const [reachedEnd, setReachedEnd] = useState(false)
+  const [search, setSearch] = useState('')
+  const [searchFocused, setSearchFocused] = useState(false)
 
   const gameIdRef = useRef<string | null>(null)
   const pageRef = useRef(0)
   const loadingRef = useRef(false)
+  const searchRef = useRef('')
   const sentinelRef = useRef<HTMLDivElement>(null)
 
-  // Charge la page suivante de cartes (triées des plus récentes aux plus anciennes).
+  // Charge la page suivante de cartes (triées des plus récentes aux plus anciennes,
+  // filtrées par la recherche en cours si elle est renseignée).
   const loadMore = useCallback(async () => {
     if (loadingRef.current || !gameIdRef.current) return
     loadingRef.current = true
 
     const from = pageRef.current * PAGE_SIZE
-    const { data, error } = await supabase
+    let query = supabase
       .from('cards')
       .select('id, name, image_url, rarity, set_name, market_price')
       .eq('game_id', gameIdRef.current)
+
+    if (searchRef.current) query = query.ilike('name', `%${searchRef.current}%`)
+
+    const { data, error } = await query
       .order('created_at', { ascending: false })
       .order('id', { ascending: false })
       .range(from, from + PAGE_SIZE - 1)
@@ -96,14 +105,29 @@ export default function GamePage() {
       gameIdRef.current = game.id
       setGameName(GAME_BANNERS[slug]?.title ?? game.name)
       setStatus('ready')
-      await loadMore()
     }
 
     init()
     return () => {
       active = false
     }
-  }, [slug, router, loadMore])
+  }, [slug, router])
+
+  // Recherche (debouncée) : réinitialise la liste et recharge depuis le début.
+  // Gère aussi le tout premier chargement une fois le jeu prêt.
+  useEffect(() => {
+    if (status !== 'ready') return
+
+    const handle = setTimeout(() => {
+      searchRef.current = search.trim()
+      pageRef.current = 0
+      setReachedEnd(false)
+      setCards([])
+      loadMore()
+    }, 300)
+
+    return () => clearTimeout(handle)
+  }, [search, status, loadMore])
 
   // Scroll infini : déclenche le chargement avant même d'atteindre le bas.
   useEffect(() => {
@@ -161,6 +185,26 @@ export default function GamePage() {
 
       {/* Grille de cartes */}
       <main className="flex-1 px-6 py-8 md:px-12">
+        {/* Barre de recherche : contour dégradé linéaire quand elle est active */}
+        <div className="relative mx-auto mb-8 max-w-xl rounded-full p-[2px]">
+          <div
+            className={`pointer-events-none absolute inset-0 rounded-full bg-white/10 transition-opacity duration-300 ${searchFocused ? 'opacity-0' : 'opacity-100'}`}
+          />
+          <div
+            className={`pointer-events-none absolute inset-0 rounded-full bg-[#B9FF48] transition-opacity duration-300 ${searchFocused ? 'opacity-100' : 'opacity-0'}`}
+          />
+          <Search className="pointer-events-none absolute left-5 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white/40" />
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => setSearchFocused(false)}
+            placeholder={t('searchPlaceholder')}
+            className="relative w-full rounded-full bg-[#0d0d0d] py-3 pl-14 pr-5 text-sm text-white placeholder:text-white/40 focus:outline-none"
+          />
+        </div>
+
         {reachedEnd && cards.length === 0 ? (
           <p className="py-16 text-center text-white/60">{t('empty')}</p>
         ) : (

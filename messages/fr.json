@@ -22,7 +22,8 @@
     "loading": "Chargement…",
     "empty": "Aucune carte pour ce jeu.",
     "end": "Vous avez vu toutes les cartes.",
-    "notFound": "Jeu introuvable."
+    "notFound": "Jeu introuvable.",
+    "searchPlaceholder": "Rechercher une carte…"
   },
   "home": {
     "heroWelcome": "BIENVENUE",

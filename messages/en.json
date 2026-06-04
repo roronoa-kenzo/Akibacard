@@ -22,7 +22,8 @@
     "loading": "Loading…",
     "empty": "No cards for this game yet.",
     "end": "You've seen every card.",
-    "notFound": "Game not found."
+    "notFound": "Game not found.",
+    "searchPlaceholder": "Search a card…"
   },
   "home": {
     "heroWelcome": "WELCOME",
