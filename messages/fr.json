@@ -18,6 +18,12 @@
     "subtitle": "Choisissez un jeu pour explorer toutes ses cartes.",
     "explore": "Explorer"
   },
+  "game": {
+    "loading": "Chargement…",
+    "empty": "Aucune carte pour ce jeu.",
+    "end": "Vous avez vu toutes les cartes.",
+    "notFound": "Jeu introuvable."
+  },
   "home": {
     "heroWelcome": "BIENVENUE",
     "heroTo": "SUR",

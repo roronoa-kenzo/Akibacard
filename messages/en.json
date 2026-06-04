@@ -18,6 +18,12 @@
     "subtitle": "Pick a game to explore all of its cards.",
     "explore": "Explore"
   },
+  "game": {
+    "loading": "Loading…",
+    "empty": "No cards for this game yet.",
+    "end": "You've seen every card.",
+    "notFound": "Game not found."
+  },
   "home": {
     "heroWelcome": "WELCOME",
     "heroTo": "TO",
