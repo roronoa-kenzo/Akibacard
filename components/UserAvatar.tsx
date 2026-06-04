@@ -17,14 +17,16 @@ function avatarUrl(user: User | null) {
 
 export function UserAvatar({ user, size = 40 }: UserAvatarProps) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={avatarUrl(user)}
-      alt={user?.email ?? 'Profile'}
-      width={size}
-      height={size}
+    <span
       style={{ width: size, height: size }}
-      className="rounded-full border-2 border-[#B9FF48] bg-white/10 object-cover"
-    />
+      className="inline-flex shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-300 p-[2px]"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={avatarUrl(user)}
+        alt={user?.email ?? 'Profile'}
+        className="h-full w-full rounded-full bg-[#0d0d0d] object-cover"
+      />
+    </span>
   )
 }
